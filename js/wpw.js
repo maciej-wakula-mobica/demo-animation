@@ -1,5 +1,5 @@
-var car = "http://10.0.0.3:8000";
-var charger = "http://10.0.0.2:8008";
+var car = "http://192.168.1.71:8000";
+var charger = "http://192.168.1.70:8008";
 var broadcasting = true;
 
 var oldStatus = '';
@@ -62,6 +62,9 @@ function processChargerJSON(jsonPath) {
 	});
 }
 function setArrow(arrow, style, name){
+	if(arrow === null || arrow === undefined){
+		return;
+	}
 	switch(style){
 		case "on":
 			var s = arrow.getAttribute("state");
@@ -109,9 +112,12 @@ function setCarDisplay(svg, data){
 	}
 	if(a7 === undefined){
 		a7 = svg.getElementById("batt");
+		if(a7 === null || a7 === undefined){
+			return;
+		}
 		a7.style.textShadow = "1px 1px 1px black";
 	}
-	if(data.hasOwnProperty('battery')){
+	if(data.hasOwnProperty('battery') && a7 !== null && a7 !== undefined){
 		a7.textContent = "batt: "+data['battery']+"%";
 	}
 	updateConsumerState(data);
