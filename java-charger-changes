@@ -1,0 +1,11 @@
+	SERVICE_STATUS("service-status"), BROADCAST_STATUS("broadcast-status"),
+	LAST_PAYMENT_RECEIVED_TIMESTAMP("last-payment-received-timestamp");
+
+			updateFlow(chargerObj, JsonTags.BROADCAST_STATUS, "broadcasting");
+
+			updateFlow(chargerObj, JsonTags.SERVICE_STATUS, "delivering");
+
+			updateFlow(chargerObj, JsonTags.SERVICE_STATUS, "standby");
+
+LAST_PAYMENT_RECEIVED_TIMESTAMP
+
